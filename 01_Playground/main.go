@@ -170,6 +170,7 @@ func factorial(num int) int {
 		return 1
 	} 
 	return num * factorial(num - 1)
+
 }
 
 func safeDiv(num1, num2 int) int {
