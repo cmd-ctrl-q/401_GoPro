@@ -1,7 +1,7 @@
 /* 
 	everything in go is Pass By Value, 
 	even when you pass a memory address, you are passing a value
-	this allows you to move large data by passing around an address
+	pointers allow you to move large data by passing around an address
 */
 
 package main 
