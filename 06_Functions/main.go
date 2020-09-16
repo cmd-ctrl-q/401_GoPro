@@ -5,6 +5,7 @@
 	Variadic functions 
 	-- accepts any number of arguments in a form of a slice or array
 	Slice parameters
+	Anon func
 
 */
 
@@ -36,4 +37,13 @@ func main() {
 	
 	var average float64 = total / float64(length)
 	fmt.Println(average)
+
+	// anon func
+	var x int = 42
+	increment := func() int {
+		x++
+		return x
+	}
+
+	fmt.Println(increment())
 }

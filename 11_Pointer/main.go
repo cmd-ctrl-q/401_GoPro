@@ -10,7 +10,6 @@ import "fmt"
 
 func main() {
 
-
 	a := 42 
 
 	// referencing 
@@ -20,6 +19,6 @@ func main() {
 	// dereference 
 	fmt.Println(*b)
 	*b = 22  // change value of `b` to 22 
-	fmt.Println(a) // dere
+	fmt.Println(a) 
 
 }
