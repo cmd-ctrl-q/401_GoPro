@@ -12,6 +12,8 @@ import "fmt"
 
 func main() {
 
+	var
+
 	// constant 
 	const PI float64 = 3.14159265 
 
