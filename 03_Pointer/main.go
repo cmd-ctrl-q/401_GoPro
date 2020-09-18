@@ -1,24 +1,47 @@
-/* 
-	everything in go is Pass By Value, 
+/*
+	everything in go is Pass By Value,
 	even when you pass a memory address, you are passing a value
 	pointers allow you to move large data by passing around an address
 */
 
-package main 
+package main
 
 import "fmt"
 
 func main() {
 
-	a := 42 
+	x := 0
 
-	// referencing 
-	var b = &a // store pointer in b 
-	fmt.Printf("\n%T\t%p\n\n", b,b) 	// print pointer
-	
-	// dereference 
-	fmt.Println(*b)
-	*b = 22  // change value of `b` to 22 
-	fmt.Println(a) 
+	changeXVal(x) // passes value of x, not x itself
+	fmt.Println("x = ", x)
 
+	changeXValNOW(&x) // pass in pointer address
+	fmt.Println("Memory address for x = ", &x)
+	fmt.Println("x = ", x)
+
+	var yPtr *int = &x
+	// var yPtr *int
+	// yPtr = &x
+	// yPtr := new(int)    // generates a pointer
+	changeYValNOW(yPtr) // pass in pointer address
+	fmt.Println("Memory address for y = ", yPtr)
+	fmt.Println("y = ", *yPtr)
+	fmt.Println("x = ", x)
+
+}
+
+func changeXVal(x int) {
+	x = 2
+}
+
+func changeXValNOW(x *int) { // we are going to be sent a reference to the value and not the value itself, allows us
+	// to change the value inside the memory address referenced by the pointer
+
+	// store 2 in the memory address that x refers to
+	*x = 2 // *x, has nothing to do with the address, but the value itself
+
+}
+
+func changeYValNOW(yPtr *int) {
+	*yPtr = 100
 }
