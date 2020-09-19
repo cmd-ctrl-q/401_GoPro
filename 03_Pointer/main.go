@@ -19,15 +19,6 @@ func main() {
 	fmt.Println("Memory address for x = ", &x)
 	fmt.Println("x = ", x)
 
-	var yPtr *int = &x
-	// var yPtr *int
-	// yPtr = &x
-	// yPtr := new(int)    // generates a pointer
-	changeYValNOW(yPtr) // pass in pointer address
-	fmt.Println("Memory address for y = ", yPtr)
-	fmt.Println("y = ", *yPtr)
-	fmt.Println("x = ", x)
-
 }
 
 func changeXVal(x int) {
@@ -40,8 +31,4 @@ func changeXValNOW(x *int) { // we are going to be sent a reference to the value
 	// store 2 in the memory address that x refers to
 	*x = 2 // *x, has nothing to do with the address, but the value itself
 
-}
-
-func changeYValNOW(yPtr *int) {
-	*yPtr = 100
 }
