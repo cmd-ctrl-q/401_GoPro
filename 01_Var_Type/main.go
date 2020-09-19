@@ -1,7 +1,7 @@
-/* 
+/*
 
 ## variables and types
-- uint8, uint16, uint32, uint64, int8, int16, int32, int64, etc 
+- uint8, uint16, uint32, uint64, int8, int16, int32, int64, etc
 - float32, float64, rune, atom
 
 */
@@ -12,20 +12,21 @@ import "fmt"
 
 func main() {
 
-	// constant 
-	const PI float64 = 3.14159265 
+	// constant
+	const PI float64 = 3.14159265
 
 	// declare a var
 	var number int // has initial value of 0
 	fmt.Println(number)
 
-	// initialize shorthand 
+	// initialize shorthand, reccomended
 	batman := "not Bruce"
 	fmt.Println(batman)
 
-	// declare many
+	// declare many; var <Name(s)> Type
 	var one, two, three int
-	one = 1
+	// multi-variable assignment
+	one, two = 1, 2
 	// one, two, three do not share addresses
 	fmt.Println(one, two, three) // 1 0 0
 
@@ -43,10 +44,14 @@ func main() {
 	fmt.Println(c) // 3
 	fmt.Println(d) // 5
 
-	// initialize many
+	// declare and initialize many
 	const x, y, z int32 = 1, 2, 3
 
-	// infer mixed types 
+	// infer mixed types
 	const l, m, n = "lion", 42, false
+	var o, p, q = "lion", 42, false
+	r, s, t := "lion", 42, false
+
+	fmt.Printf("%s %d %t \n%v %v %v\n", o, p, q, r, s, t)
 
 }
