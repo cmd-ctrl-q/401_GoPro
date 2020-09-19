@@ -1,65 +1,56 @@
 /*
-	Functions 
+	*** Functions ***
 
-	First class citizens
-	- Then assigned to variables and passed as arguments to other functions and can be returned from a function. 
-	- Functions can return multiple variables	
+	First Class Citizens / Higher Order Functions
+	- The ability to treat functions as regular values
+	- e.g.
+		- assign functions to varibles
+		- pass functions as arguments 
+		- return functions 
 	
-	
+	Other:
+	Functions can return multiple variables	
 	Functions can be stored as struct fields.
 
-	Variadic functions 
-	-- accepts any number of arguments in a form of a slice or array
-	Slice parameters
-	Anon func
+	Variadic functions: 
+	- accepts any number of arguments in a form of a slice or array
+	- denoted as: func(slice ...type)
 */
 
 package main 
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 
-func print1(f func()) {
+// picks two random numbers in a slice of ints
+func pickRandom(min, max int) (int, int) {
+	rn1 := rand.Intn(max - min) + min
+	rn2 := rand.Intn(max - min) + min
+	return rn1, rn2 // return multiple values
 }
 
-// func print2(f func()) {
-// 	f()
-// }
+type fn func(int, int) (int, int) // create type func
+
+// find difference between two values. 
+func calcDiff(f fn, min, max int) (int, int, int) {
+	// pick random ints between min and max values
+	rn1, rn2 := f(min, max) 
+
+	// find difference and return (rn1, rn2, difference)
+	if rn1 > rn2 {
+		return rn2, rn1, (rn1 - rn2)
+	} 
+	return rn1, rn2, (rn2 - rn1)
+}
+
+
 
 func main() {
 
-
-}
-
-
-
-
-// the ...type notation unfurls container types (eg slice, array, maps)
-// func sum(si ...float64) (int, float64) {
-// 	var length int
-// 	var total float64
-
-// 	// Blank Identifier notation _
-// 	// used for readability, and 
-// 	for _, v := range si {
-// 		length += 1
-// 		total += float64(v)
-// 	}
-// 	return length, total
-// }
-
-
-	// nums := []float64{1,2,3,4,5,6,7,8,9}
-	// length, total := sum(nums...)
+	rn1, rn2, diff := calcDiff(pickRandom, 100, 1000)
+	fmt.Printf("min:\t\t%d\nmax:\t\t%d\ndifference:\t%d\n", rn1, rn2, diff)
 	
-	// var average float64 = total / float64(length)
-	// fmt.Println(average)
-
-	// // anon func
-	// var x int = 42
-	// increment := func() int {
-	// 	x++
-	// 	return x
-	// }
+}
