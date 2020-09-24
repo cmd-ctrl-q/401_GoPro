@@ -32,7 +32,7 @@ func PickRandom(min, max int) (int, int) {
 
 type fn func(int, int) (int, int) // create type func
 
-// CalcDiff finds difference between two values.
+// finds difference between two values.
 func CalcDiff(f fn, min, max int) (int, int, int) {
 	// pick random ints between min and max values
 	rn1, rn2 := f(min, max)
